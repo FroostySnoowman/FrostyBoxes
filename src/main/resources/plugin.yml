@@ -1,25 +1,12 @@
 name: 'BetterShulkerBoxes'
 version: 4.1.1
-main: dev.martinl.bsbrewritten.BSBRewritten
-author: 'Rektb (lMartin3#1975)'
+main: net.frostyservices.frostyboxes.Main
+author: 'FroostySnoowman, someone0171'
 api-version: '1.13'
 commands:
-  bsb:
-    description: 'Main BetterShulkerBoxes command'
-
-softdepend: [ChestSort, WorldGuard]
+  fb:
+    description: 'Main FrostyBoxes command'
 
 permissions:
-  bettershulkerboxes.*:
+  fb.*:
     description: Grants all BetterShulkerBoxes permissions
-    children:
-      bettershulkerboxes.use: true
-      bettershulkerboxes.admin: true
-      bettershulkerboxes.bypasscooldown: true
-  bettershulkerboxes.use:
-    description: Allows the player to use the plugin's features
-  bettershulkerboxes.admin:
-    description: Allows the player to reload the configuration and check for updates
-  bettershulkerboxes.bypasscooldown:
-    description: Allows the player to bypass the established cooldown
-
