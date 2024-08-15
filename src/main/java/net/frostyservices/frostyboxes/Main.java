@@ -7,7 +7,6 @@ import net.frostyservices.frostyboxes.listeners.InteractListener;
 import net.frostyservices.frostyboxes.listeners.InventoryCloseListener;
 import net.frostyservices.frostyboxes.manager.ShulkerManager;
 import lombok.Getter;
-import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,8 +16,6 @@ public class Main extends JavaPlugin {
     private static Main instance;
     private ShulkerManager shulkerManager;
     private ConfigurationLoader<FBConfig> configurationLoader;
-    @Setter
-    private boolean lockFeatures = false;
 
 
     @Override

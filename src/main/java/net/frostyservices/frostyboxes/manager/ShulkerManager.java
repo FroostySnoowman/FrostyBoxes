@@ -6,6 +6,7 @@ import net.frostyservices.frostyboxes.util.FBPermission;
 import net.frostyservices.frostyboxes.util.TimeUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.block.ShulkerBox;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
@@ -31,21 +32,19 @@ public class ShulkerManager {
 
 
     public void openShulkerBoxInventory(Player player, ItemStack shulkerStack, SlotType slotType, int rawSlot) {
-        if (instance.isLockFeatures()) return;
         FBConfig bsbConfig = instance.getBSBConfig();
 
         // Cooldown check
         int cooldown = getPlayerCooldown(player.getUniqueId());
         if (cooldown > 0 && !player.hasPermission(FBPermission.BYPASS_COOLDOWN.toString())) {
             int[] formatted = TimeUtils.formatToMinutesAndSeconds(cooldown);
-            bsbConfig.getCooldownMessage().send(player, "%minutes%", String.valueOf(formatted[0]), "%seconds%", String.valueOf(formatted[1]));
+            bsbConfig.getCooldownMessage().send(player, "%seconds%", String.valueOf(formatted[1]));
             return;
         }
 
 
         // close the player's current inventory if they have one open
-        if (player.getOpenInventory().getTopInventory().getType() != InventoryType.CRAFTING||
-                openShulkerInventories.containsKey(player.getOpenInventory().getTopInventory())) {
+        if (player.getOpenInventory().getTopInventory().getType() != InventoryType.CRAFTING || openShulkerInventories.containsKey(player.getOpenInventory().getTopInventory())) {
             player.closeInventory();
         };
 
@@ -59,6 +58,8 @@ public class ShulkerManager {
         ShulkerBox shulker = (ShulkerBox) bsm.getBlockState();
         Inventory inventory = Bukkit.createInventory(null, InventoryType.SHULKER_BOX, formatShulkerPlaceholder(bsbConfig.getInventoryName(), shulkerStack));
         inventory.setContents(shulker.getInventory().getContents());
+
+        player.playSound(player.getLocation(), Sound.BLOCK_SHULKER_BOX_OPEN, 1.0f, 1.0f);
 
         player.openInventory(inventory);
         ItemStack clone = shulkerStack.clone();

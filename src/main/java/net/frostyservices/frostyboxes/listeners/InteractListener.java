@@ -29,7 +29,6 @@ public class InteractListener implements Listener {
         ItemStack is = e.getPlayer().getInventory().getItemInMainHand();
         if(is.getAmount() != 1) return;
         if (!MaterialUtil.isShulkerBox(is.getType())) return;
-        //todo permissions, cooldown, worldguard area perms, etc
         BlockStateMeta bsm = (BlockStateMeta) is.getItemMeta();
         assert bsm != null;
         instance.getShulkerManager().openShulkerBoxInventory(e.getPlayer(), is, SlotType.HOTBAR, e.getPlayer().getInventory().getHeldItemSlot());

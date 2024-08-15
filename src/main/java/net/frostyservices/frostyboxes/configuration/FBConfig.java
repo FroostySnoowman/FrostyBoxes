@@ -15,7 +15,7 @@ public class FBConfig implements IDeepCloneable {
 
     private ConfigMessage prefix = new ConfigMessage("&8[&4&lNB&c&lB&8] &r");
     private String inventoryName = "%shulker_name%";
-    private ConfigMessage cooldownMessage = new ConfigMessage("&cYou have to wait %minutes% minutes and %seconds% before using this again!");
+    private ConfigMessage cooldownMessage = new ConfigMessage("&cYou have to wait %seconds% before using this again!");
 
     @Override
     public IDeepCloneable clone() {

@@ -20,9 +20,6 @@ public class ConfigMessage {
     public void send(CommandSender sender, String... placeholders) {
         send(sender, this, true, placeholders);
     }
-    public void send(CommandSender sender, boolean prefix, String... placeholders) {
-        send(sender, this, prefix, placeholders);
-    }
 
     public static void send(CommandSender sender, ConfigMessage message, boolean prefix, String... placeholders) {
         if(message==null||message.getRaw()==null||message.getRaw().isEmpty()) return;
